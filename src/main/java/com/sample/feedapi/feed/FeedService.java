@@ -2,9 +2,9 @@ package com.sample.feedapi.feed;
 
 import java.util.List;
 
-interface UserService {
+interface FeedService {
 
-    Feed create(Feed user);
+    Feed create(Feed feed);
 
     Feed delete(String id);
 
@@ -12,7 +12,7 @@ interface UserService {
 
     Feed findById(String id);
     
-    Feed findByUserId(String userId);
+    Feed findByFeedId(String feedId);
 
-    Feed update(Feed user);
+    Feed update(Feed feed);
 }

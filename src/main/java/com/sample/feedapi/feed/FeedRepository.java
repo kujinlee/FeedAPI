@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.Repository;
 
-interface FeedArticleRepository extends Repository<Feed, String> {
+interface FeedRepository extends Repository<Feed, String> {
 
     void delete(Feed deleted);
 
@@ -15,7 +15,7 @@ interface FeedArticleRepository extends Repository<Feed, String> {
 
     Feed findById(String id);
     
-    Feed findByUserId(String userId);
+    Feed findByFeedId(String feedId);
 
     Feed save(Feed saved);
 }

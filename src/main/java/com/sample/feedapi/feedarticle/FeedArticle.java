@@ -1,4 +1,4 @@
-package com.sample.feedapi.feed;
+package com.sample.feedapi.feedarticle;
 
 import org.springframework.data.annotation.Id;
 
@@ -7,6 +7,9 @@ import org.springframework.data.annotation.Id;
  * Collection of FeedArticle contains all articles belongs to the feed
  * Same article can belongs to multiple feeds
  * Collection of FeedArticle will be saved in mongodb
+ * 
+ * FeedArticle instance is created when an Article is fed 
+ * and inserted into mongodb 
  * @author klee
  *
  */

@@ -40,7 +40,7 @@ final class UserServiceMongoDbImpl implements UserService {
     public User delete(String id) {
         LOGGER.info("Deleting a user entry with id: {}", id);
 
-        User deleted = findUserById(id);
+        User deleted = repository.findById(id);
         repository.delete(deleted);
 
         LOGGER.info("Deleted user entry with informtation: {}", deleted);
@@ -50,13 +50,13 @@ final class UserServiceMongoDbImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        LOGGER.info("Finding all todo entries.");
+        LOGGER.info("Finding all user entries.");
 
-        List<User> todoEntries = repository.findAll();
+        List<User> userEntries = repository.findAll();
 
-        LOGGER.info("Found {} user entries", todoEntries.size());
+        LOGGER.info("Found {} user entries", userEntries.size());
 
-        return todoEntries;
+        return userEntries;
     }
 
     @Override
@@ -87,25 +87,13 @@ final class UserServiceMongoDbImpl implements UserService {
     public User update(User user) {
         LOGGER.info("Updating user entry with information: {}", user);
 
-        User updated = findUserById(user.getId());
+        User updated = repository.findById(user.getId());
         updated.update(user.getName(), user.getUserId());
         updated = repository.save(updated);
 
         LOGGER.info("Updated user entry with information: {}", updated);
 
         return updated;
-    }
-
-    private User findUserById(String id) {
-//    	 Optional<User> result = repository.findOne(id);
-//         return result.orElseThrow(() -> new NotFoundException(id));
-        User result = repository.findById(id);
-        return result;
-    }
-    
-    private User findUserByUserId(String userId) {
-        User result = repository.findByUserId(userId);
-        return result;
     }
 
 }

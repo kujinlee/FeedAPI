@@ -37,7 +37,7 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
     public Subscription delete(String id) {
         LOGGER.info("Deleting a subscription entry with id: {}", id);
 
-        Subscription deleted = findSubscriptionById(id);
+        Subscription deleted = repository.findById(id);
         repository.delete(deleted);
 
         LOGGER.info("Deleted subscription entry with informtation: {}", deleted);
@@ -60,7 +60,7 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
     public Subscription findById(String id) {
         LOGGER.info("Finding subscription entry with id: {}", id);
 
-        Subscription found = findSubscriptionById(id);
+        Subscription found = repository.findById(id);
 
         LOGGER.info("Found todo entry: {}", found);
 
@@ -71,20 +71,13 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
     public Subscription update(Subscription subscription) {
         LOGGER.info("Updating todo entry with information: {}", subscription);
 
-        Subscription updated = findSubscriptionById(subscription.getId());
+        Subscription updated = repository.findById(subscription.getId());
         updated.update(subscription.getUserId(), subscription.getTopics());
         updated = repository.save(updated);
 
         LOGGER.info("Updated todo entry with information: {}", updated);
 
         return updated;
-    }
-
-    private Subscription findSubscriptionById(String id) {
-//        Optional<Subscription> result = repository.findOne(id);
-//        return result.orElseThrow(() -> new NotFoundException(id));
-      Subscription result = repository.findById(id);
-      return result;    	
     }
 
 	@Override
