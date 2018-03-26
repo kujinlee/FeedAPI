@@ -71,7 +71,7 @@ final class ArticleController {
     }
     
     @RequestMapping(value = "/feedapi/article/articleId/{articleId}", method = RequestMethod.GET)
-    Article findByUserId(@PathVariable("articleId") String articleId) {
+    Article findByArticleId(@PathVariable("articleId") String articleId) {
         LOGGER.info("Finding article entry with id: {}", articleId);
 
         Article articleEntry = service.findByArticleId(articleId);

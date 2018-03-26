@@ -75,7 +75,6 @@ final class FeedArticleServiceMongoDbImpl implements FeedArticleService {
     public List<FeedArticle> findByFeedId(String feedId) {
         LOGGER.info("Finding feedArticle entry with feedId: {}", feedId);
 
-        //User found = findUserByUserId(userId);
         List<FeedArticle> found = repository.findByFeedId(feedId);
 
         LOGGER.info("Found feedArticle entry: {}", found);

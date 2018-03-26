@@ -15,7 +15,7 @@ interface ArticleRepository extends Repository<Article, String> {
 
     Article findById(String id);
     
-    Article findByUserId(String userId);
+    Article findByArticleId(String articleId);
 
     Article save(Article saved);
 }

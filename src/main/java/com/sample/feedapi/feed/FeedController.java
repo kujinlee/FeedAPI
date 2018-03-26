@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sample.feedapi.exception.NotFoundException;
 
 import javax.validation.Valid;
+
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -76,13 +78,25 @@ final class FeedController {
     }
     
     @RequestMapping(value = "/feedapi/feed/feedId/{feedId}", method = RequestMethod.GET)
-    Feed findByUserId(@PathVariable("feedId") String feedId) {
+    Feed findByFeedId(@PathVariable("feedId") String feedId) {
         LOGGER.info("Finding feed entry with feedId: {}", feedId);
 
         Feed feedEntry = service.findByFeedId(feedId);
         LOGGER.info("Found feed entry with information: {}", feedEntry);
 
         return feedEntry;
+    }
+    
+ // TODO: topic1,topic2 doesn't work. topic1 works
+    @RequestMapping(value = "/feedapi/feed/topics/{topicsCsv}", method = RequestMethod.GET)
+    List<Feed> findByTopicsIn(@PathVariable("topicsCsv") String topicsCsv) {
+        LOGGER.info("Finding feed entries with topics: {}", topicsCsv);
+        List<String> topicsToQuery = Arrays.asList(topicsCsv);
+        LOGGER.info("Finding feed entry with topics: {}", topicsToQuery);
+        List<Feed> feedEntries = service.findByTopicsIn(topicsToQuery);
+        LOGGER.info("Found feed entries with information: {}", feedEntries);
+
+        return feedEntries;
     }
 
     @RequestMapping(value = "/feedapi/feed/{id}", method = RequestMethod.PUT)

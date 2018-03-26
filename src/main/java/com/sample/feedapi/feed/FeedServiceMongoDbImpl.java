@@ -1,14 +1,11 @@
 package com.sample.feedapi.feed;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sample.feedapi.exception.NotFoundException;
 
 @Service
 final class FeedServiceMongoDbImpl implements FeedService {
@@ -28,6 +25,7 @@ final class FeedServiceMongoDbImpl implements FeedService {
 
         Feed persisted = (new Feed())
                 .withFeedId(feed.getFeedId())
+                .withTopics(feed.getTopics())
                 .withDescription(feed.getDescription());
 
         persisted = repository.save(persisted);
@@ -75,7 +73,6 @@ final class FeedServiceMongoDbImpl implements FeedService {
     public Feed findByFeedId(String feedId) {
         LOGGER.info("Finding feed entry with feedId: {}", feedId);
 
-        //User found = findUserByUserId(userId);
         Feed found = repository.findByFeedId(feedId);
 
         LOGGER.info("Found feed entry: {}", found);
@@ -88,12 +85,18 @@ final class FeedServiceMongoDbImpl implements FeedService {
         LOGGER.info("Updating feed entry with information: {}", feed);
 
         Feed updated = repository.findById(feed.getId());
-        updated.update(feed.getFeedId(), feed.getDescription());
+        updated.update(feed.getFeedId(), feed.getTopics(), feed.getDescription());
         updated = repository.save(updated);
 
         LOGGER.info("Updated feed entry with information: {}", updated);
 
         return updated;
     }
+    
+    @Override
+	public List<Feed> findByTopicsIn(List<String> topicsToQuery) {
+		List<Feed> result = repository.findByTopicsIn(topicsToQuery);
+        return result;
+	}
 
 }

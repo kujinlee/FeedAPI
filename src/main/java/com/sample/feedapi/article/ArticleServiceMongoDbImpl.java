@@ -63,7 +63,6 @@ final class ArticleServiceMongoDbImpl implements ArticleService {
     public Article findById(String id) {
         LOGGER.info("Finding article entry with id: {}", id);
 
-        //User found = findUserById(id);
         Article found = repository.findById(id);
 
         LOGGER.info("Found article entry: {}", found);
@@ -75,8 +74,7 @@ final class ArticleServiceMongoDbImpl implements ArticleService {
     public Article findByArticleId(String articleId) {
         LOGGER.info("Finding article entry with articleId: {}", articleId);
 
-        //User found = findUserByUserId(articleId);
-        Article found = repository.findByUserId(articleId);
+        Article found = repository.findByArticleId(articleId);
 
         LOGGER.info("Found article entry: {}", found);
 

@@ -13,6 +13,8 @@ interface FeedService {
     Feed findById(String id);
     
     Feed findByFeedId(String feedId);
+    
+    List<Feed> findByTopicsIn(List<String> topics);
 
     Feed update(Feed feed);
 }

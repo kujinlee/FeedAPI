@@ -31,6 +31,12 @@ final class SubscriptionController {
         this.service = service;
     }
 
+    /**
+     * this API is to subscribe a user to one of more topics
+     * 
+     * @param subscriptionEntry
+     * @return
+     */
     @RequestMapping(value = "/feedapi/subscription", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     Subscription create(@RequestBody @Valid Subscription subscriptionEntry) {
@@ -85,13 +91,13 @@ final class SubscriptionController {
     // TODO: topic1,topic2 doesn't work. topic1 works
     @RequestMapping(value = "/feedapi/subscription/topics/{topicsCsv}", method = RequestMethod.GET)
     List<Subscription> findByTopicsIn(@PathVariable("topicsCsv") String topicsCsv) {
-        LOGGER.info("Finding subscription entry with topics: {}", topicsCsv);
+        LOGGER.info("Finding subscription entries with topics: {}", topicsCsv);
         List<String> topicsToQuery = Arrays.asList(topicsCsv);
-        LOGGER.info("Finding subscription entry with topics: {}", topicsToQuery);
-        List<Subscription> subscriptionEntry = service.findByTopicsIn(topicsToQuery);
-        LOGGER.info("Found subscription entry with information: {}", subscriptionEntry);
+        LOGGER.info("Finding subscription entries with topics: {}", topicsToQuery);
+        List<Subscription> subscriptionEntries = service.findByTopicsIn(topicsToQuery);
+        LOGGER.info("Found subscription entries with information: {}", subscriptionEntries);
 
-        return subscriptionEntry;
+        return subscriptionEntries;
     }
 
     @RequestMapping(value = "/feedapi/subscription/{id}", method = RequestMethod.PUT)
