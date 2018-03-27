@@ -1,9 +1,8 @@
 package com.sample.feedapi.subscription;
 
-import org.springframework.data.repository.Repository;
-
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.data.repository.Repository;
 
 interface SubscriptionRepository extends Repository<Subscription, String> {
 
@@ -11,13 +10,11 @@ interface SubscriptionRepository extends Repository<Subscription, String> {
 
     List<Subscription> findAll();
 
-    Optional<Subscription> findOne(String id);
-    
     Subscription findById(String id);
     
     Subscription findByUserId(String userId);
     
-    List<Subscription> findByTopicsIn(List<String> topicsToQuery);
+    List<Subscription> findByFeedIdsIn(List<String> feedIdsToQuery);
 
     Subscription save(Subscription saved);
 }

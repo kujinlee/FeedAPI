@@ -14,5 +14,7 @@ interface ArticleService {
     
     Article findByArticleId(String articleId);
 
+    List<Article> findByFeedIdsIn(List<String> feedIds);
+
     Article update(Article article);
 }

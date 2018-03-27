@@ -32,7 +32,7 @@ final class SubscriptionController {
     }
 
     /**
-     * this API is to subscribe a user to one of more topics
+     * this API is to subscribe a user to one of more feeds
      * 
      * @param subscriptionEntry
      * @return
@@ -88,13 +88,18 @@ final class SubscriptionController {
         return subscriptionEntry;
     }
     
-    // TODO: topic1,topic2 doesn't work. topic1 works
-    @RequestMapping(value = "/feedapi/subscription/topics/{topicsCsv}", method = RequestMethod.GET)
-    List<Subscription> findByTopicsIn(@PathVariable("topicsCsv") String topicsCsv) {
-        LOGGER.info("Finding subscription entries with topics: {}", topicsCsv);
-        List<String> topicsToQuery = Arrays.asList(topicsCsv);
-        LOGGER.info("Finding subscription entries with topics: {}", topicsToQuery);
-        List<Subscription> subscriptionEntries = service.findByTopicsIn(topicsToQuery);
+    // TODO: feed1,feed2 doesn't work. feed1 works
+    /**
+     * 
+     * @param feedsCsv - single string as comma separated list of feedIds without space char
+     * @return
+     */
+    @RequestMapping(value = "/feedapi/subscription/feeds/{feedIdsCsv}", method = RequestMethod.GET)
+    List<Subscription> findByFeedIdsIn(@PathVariable("feedsCsv") String feedsCsv) {
+        LOGGER.info("Finding subscription entries with feeds: {}", feedsCsv);
+        List<String> feedsToQuery = Arrays.asList(feedsCsv);
+        LOGGER.info("Finding subscription entries with feedIds: {}", feedsToQuery);
+        List<Subscription> subscriptionEntries = service.findByFeedIdsIn(feedsToQuery);
         LOGGER.info("Found subscription entries with information: {}", subscriptionEntries);
 
         return subscriptionEntries;

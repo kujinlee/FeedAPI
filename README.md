@@ -2,27 +2,31 @@ Mongodb is chosen for DB
 
 Design:
 User: {userId, name}
-Feed: {feedId, list of topics}
-Article: {articleId, list of topics}
-Subscription: {userId, list of topics}
-FeedArticle: {feedId, articleId}
+Feed: {feedId, description}
+Article: {articleId, listOfFeed, content}
+Subscription: {userId, listOfFeed}
+FeedArticle: {feedId, articleId} 
 
-- User can subscribe one or more topics the user want to follow. User can find its subscription via Subscription collection in mongoDB
-- Feed is a grouping of article by one of more topics that it is configured. feed can find articles that belongs to the feed via FeedArticle collection in mongoDB
-- Article is article with topics attached. When article is feed to FeedAPI, it finds relevant Feed for the topics of the Article and insert one of more FeedArticle
+- User can subscribe one or more feeds the user want to follow. User can find its listOfFeed via Subscription collection in mongoDB. Once listOfFeed are found for the given user, all the articles associated with found listOfFeed can also be retrieved from FeedArticle collection
 
-- (1) Finding all Articles for a given user is following:
-      a) find listOfTopics for the user
-      b) find Articles for the listOfTopics from Article Collection
-      
-      NOTE: I noticed that that this is not the intended way. To fix this, change Subscription as {userId, list of feedId}. User will have to choose which feeds to subscribe based on configurations of Feed. Alternatively, Feed can be defined as {feedId, topic} so that feed becomes same as topic in cocept. 
-      
- - (2) Finding all Articles from set of Feed
-      a) find listOfTopics for the Feed
-      b) find Articles for the listOfTopics via Article collection in mongoDB
+- Feed is marker (ie, tag) for article. Articles for a given feed can be found from FeedArticle collection in mongoDB
 
+- Article is contents with listOfFeed attached. When article is fed to FeedAPI, it finds relevant Feeds from its listOfFeed attribute. One new article will insert one of more FeedArticle
 
+- Subscription is association between user and feed. A given user has listOfFeed associated.
 
+- FeedArticle is association between a feed and an article. 
+
+  (1) Finding all Articles for a given user is following:
+      a) find listOfFeed for the user from its subscription
+      b) find Articles for the listOfFeed from FeedArticle Collection
+         
+  (2) Finding all Articles from listOfFeed
+      a) find listOfArticleId for the listOfFeed from FeedArticle collection
+      b) find listOfArticle for teh listOfArticleId from Article collection
+  (3) Subscribe a user to listOfFeed
+      a) create of update subscription for the given user and listOfFeed
+	
 You can run this application by using the following command:
 
     mvn clean spring-boot:run

@@ -1,5 +1,10 @@
 package com.sample.feedapi.article;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.feedapi.exception.NotFoundException;
-
-import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 final class ArticleController {
@@ -79,7 +81,24 @@ final class ArticleController {
 
         return articleEntry;
     }
+    
+    // TODO: feed1,feed2 doesn't work. feed1 works
+    /**
+     * 
+     * @param feedsCsv - single string as comma separated list of feedIds without space char
+     * @return
+     */
+    @RequestMapping(value = "/feedapi/article/feeds/{feedIdsCsv}", method = RequestMethod.GET)
+    List<Article> findByFeedIdsIn(@PathVariable("feedsCsv") String feedsCsv) {
+        LOGGER.info("Finding article entries with feeds: {}", feedsCsv);
+        List<String> feedsToQuery = Arrays.asList(feedsCsv);
+        LOGGER.info("Finding article entries with feedIds: {}", feedsToQuery);
+        List<Article> articleEntries = service.findByFeedIdsIn(feedsToQuery);
+        LOGGER.info("Found article entries with information: {}", articleEntries);
 
+        return articleEntries;
+    }
+    
     @RequestMapping(value = "/feedapi/article/{id}", method = RequestMethod.PUT)
     Article update(@RequestBody @Valid Article articleEntry, @PathVariable("id") String id) {
         LOGGER.info("Updating article entry with information: {}", articleEntry);

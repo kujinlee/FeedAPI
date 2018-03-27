@@ -1,14 +1,11 @@
 package com.sample.feedapi.article;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sample.feedapi.exception.NotFoundException;
 
 @Service
 final class ArticleServiceMongoDbImpl implements ArticleService {
@@ -28,6 +25,7 @@ final class ArticleServiceMongoDbImpl implements ArticleService {
 
         Article persisted = (new Article())
                 .withArticleId(article.getArticleId())
+                .withFeedIds(article.getFeedIds())
                 .withContent(article.getContent());
 
         persisted = repository.save(persisted);
@@ -86,12 +84,18 @@ final class ArticleServiceMongoDbImpl implements ArticleService {
         LOGGER.info("Updating article entry with information: {}", article);
 
         Article updated = repository.findById(article.getId());
-        updated.update(article.getArticleId(), article.getTopics(), article.getContent());
+        updated.update(article.getArticleId(), article.getFeedIds(), article.getContent());
         updated = repository.save(updated);
 
         LOGGER.info("Updated article entry with information: {}", updated);
 
         return updated;
     }
+
+	@Override
+	public List<Article> findByFeedIdsIn(List<String> feedIdsToQuery) {
+		List<Article> result = repository.findByFeedIdsIn(feedIdsToQuery);
+        return result;
+	}
 
 }

@@ -16,8 +16,6 @@ interface FeedRepository extends Repository<Feed, String> {
     Feed findById(String id);
     
     Feed findByFeedId(String feedId);
-    
-    List<Feed> findByTopicsIn(List<String> topicsToQuery);
 
     Feed save(Feed saved);
 }

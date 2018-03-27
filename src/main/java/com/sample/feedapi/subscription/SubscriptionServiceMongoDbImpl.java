@@ -25,7 +25,7 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
 
         Subscription persisted = (new Subscription())
                 .withUserId(subscription.getUserId())
-                .withTopics(subscription.getTopics());
+                .withFeedIds(subscription.getFeedIds());
 
         persisted = repository.save(persisted);
         LOGGER.info("Created a new subscription entry with information: {}", persisted);
@@ -72,7 +72,7 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
         LOGGER.info("Updating todo entry with information: {}", subscription);
 
         Subscription updated = repository.findById(subscription.getId());
-        updated.update(subscription.getUserId(), subscription.getTopics());
+        updated.update(subscription.getUserId(), subscription.getFeedIds());
         updated = repository.save(updated);
 
         LOGGER.info("Updated todo entry with information: {}", updated);
@@ -87,8 +87,8 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
 	}
 
 	@Override
-	public List<Subscription> findByTopicsIn(List<String> topicsToQuery) {
-		List<Subscription> result = repository.findByTopicsIn(topicsToQuery);
+	public List<Subscription> findByFeedIdsIn(List<String> feedIdsToQuery) {
+		List<Subscription> result = repository.findByFeedIdsIn(feedIdsToQuery);
         return result;
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 
 /**
- * subscription to article topics by user
+ * subscription to article feeds by user
  * @author klee
  *
  */
@@ -17,10 +17,10 @@ final class Subscription {
 
     private String userId;
     
-    private List<String> topics;
+    private List<String> feedIds;
 
     public Subscription() {
-    	topics = new ArrayList<String>();
+    	feedIds = new ArrayList<String>();
     }
     
     public Subscription withUserId(String userId) {
@@ -28,8 +28,8 @@ final class Subscription {
     	return this;
     }
     
-    public Subscription withTopics(List<String> topics) {
-    	this.topics = topics;
+    public Subscription withFeedIds(List<String> feedIds) {
+    	this.feedIds = feedIds;
     	return this;
     }
 
@@ -37,30 +37,30 @@ final class Subscription {
         return id;
     }
 
-    public List<String> getTopics() {
-        return topics;
+    public List<String> getFeedIds() {
+        return feedIds;
     }
 
     public String getUserId() {
         return userId;
     }
 
-    public void update(String userId, List<String> topics) {
+    public void update(String userId, List<String> feedIds) {
 
         this.userId = userId;
-        this.topics = topics;
+        this.feedIds = feedIds;
     }
 
     @Override
     public String toString() {
     	StringBuffer sb = new StringBuffer();
-    	if (topics != null) {
-	    	for (String topic: topics) {
-	    		sb.append(topic + " ");
+    	if (feedIds != null) {
+	    	for (String feedId: feedIds) {
+	    		sb.append(feedId + " ");
 	    	}
     	}
         return String.format(
-                "User[id=%s, userId=%s, topics=[%s]]",
+                "User[id=%s, userId=%s, feedIds=[%s]]",
                 this.id,
                 this.userId,
                 sb.toString()

@@ -1,7 +1,6 @@
 package com.sample.feedapi.article;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.repository.Repository;
 
@@ -11,11 +10,11 @@ interface ArticleRepository extends Repository<Article, String> {
 
     List<Article> findAll();
     
-    Optional<Article> findOne(String id);
-
     Article findById(String id);
     
-    Article findByArticleId(String articleId);
+    Article findByArticleId(String articleId);    
+
+    List<Article> findByFeedIdsIn(List<String> feedIdsToQuery);
 
     Article save(Article saved);
 }

@@ -14,10 +14,10 @@ final class Article {
 
     private String articleId;
     
-    private List<String> topics;
+    private List<String> feedIds;
 
     public Article() {
-    	topics = new ArrayList<String>();
+    	feedIds = new ArrayList<String>();
     }
     
     public Article withArticleId(String articleId) {
@@ -30,8 +30,8 @@ final class Article {
     	return this;
     }
     
-    public Article withTopics(List<String> topics) {
-    	this.topics = topics;
+    public Article withFeedIds(List<String> feedIds) {
+    	this.feedIds = feedIds;
     	return this;
     }
 
@@ -47,27 +47,27 @@ final class Article {
         return articleId;
     }
     
-    public List<String> getTopics() {
-        return topics;
+    public List<String> getFeedIds() {
+        return feedIds;
     }
 
-    public void update(String articleId, List<String> topics, String content) {
+    public void update(String articleId, List<String> feedIds, String content) {
 
         this.articleId = articleId;
-        this.topics = topics;
+        this.feedIds = feedIds;
         this.content = content;
     }
 
     @Override
     public String toString() {
     	StringBuffer sb = new StringBuffer();
-    	if (topics != null) {
-	    	for (String topic: topics) {
-	    		sb.append(topic + " ");
+    	if (feedIds != null) {
+	    	for (String feedId: feedIds) {
+	    		sb.append(feedId + " ");
 	    	}
     	}
         return String.format(
-                "User[id=%s, articleId=%s, topics=[%s], content=%s]",
+                "User[id=%s, articleId=%s, feedIds=[%s], content=%s]",
                 this.id,
                 this.articleId,
                 sb.toString(),

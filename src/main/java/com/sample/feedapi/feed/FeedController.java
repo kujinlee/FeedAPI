@@ -87,18 +87,6 @@ final class FeedController {
         return feedEntry;
     }
     
- // TODO: topic1,topic2 doesn't work. topic1 works
-    @RequestMapping(value = "/feedapi/feed/topics/{topicsCsv}", method = RequestMethod.GET)
-    List<Feed> findByTopicsIn(@PathVariable("topicsCsv") String topicsCsv) {
-        LOGGER.info("Finding feed entries with topics: {}", topicsCsv);
-        List<String> topicsToQuery = Arrays.asList(topicsCsv);
-        LOGGER.info("Finding feed entry with topics: {}", topicsToQuery);
-        List<Feed> feedEntries = service.findByTopicsIn(topicsToQuery);
-        LOGGER.info("Found feed entries with information: {}", feedEntries);
-
-        return feedEntries;
-    }
-
     @RequestMapping(value = "/feedapi/feed/{id}", method = RequestMethod.PUT)
     Feed update(@RequestBody @Valid Feed feedEntry, @PathVariable("id") String id) {
         LOGGER.info("Updating feed entry with information: {}", feedEntry);
