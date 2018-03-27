@@ -17,15 +17,27 @@ FeedArticle: {feedId, articleId}
 
 - FeedArticle is association between a feed and an article. 
 
-  (1) Finding all Articles for a given user is following:
-      a) find listOfFeed for the user from its subscription
-      b) find Articles for the listOfFeed from FeedArticle Collection
-         
-  (2) Finding all Articles from listOfFeed
-      a) find listOfArticleId for the listOfFeed from FeedArticle collection
-      b) find listOfArticle for teh listOfArticleId from Article collection
-  (3) Subscribe a user to listOfFeed
-      a) create of update subscription for the given user and listOfFeed
+
+Operations
+
+  (1) Subscribe/Unsubscribe a User to a Feed
+      a) read the user from User collection
+      	(a1) If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
+      	(a2) If the user exists
+		      (a21) read the user's subscription from Subscription collection
+		      (a22) update/delete the the user's Subscription to Subscription collection
+      
+  (2) Add Articles to a Feed
+      a) For each new articles
+        (a1) create Article into Article collection
+        (a2) create FeedArticle into FeedArticle collection for the newly created article
+  
+  (3) Get all Feeds a Subscriber is following
+      a) read listOfFeed for the user (subscriber) from Subscription collection
+  
+  (4) Get Articles from the set of Feeds a Subscriber is following
+      a) read listOfFeed for the user (subscriber) from Subscription collection
+      b) read articles for the listOfFeed from FeedArticle collection  
 	
 You can run this application by using the following command:
 
