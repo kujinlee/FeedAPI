@@ -41,8 +41,8 @@
   
   4. Get Articles from the set of Feeds a Subscriber is following
   (external_get_articles_by_feedIds.sh)
-      1. read listOfFeed for the user (subscriber) from Subscription collection
-      1. read articles for the listOfFeed from FeedArticle collection  
+      read listOfFeed for the user (subscriber) from Subscription collection  
+      read articles for the listOfFeed from FeedArticle collection  
 	
   5. You can run this application by using the following command:
 
