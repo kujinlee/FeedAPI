@@ -46,10 +46,10 @@
 	
   5. You can run this application by using the following command:
 
-    - mvn clean spring-boot:run
+      - mvn clean spring-boot:run
     
 ## Test with scripts:
- 1. move to scripts directory
+ 1. move to scripts directory  
    $ cd /FeedAPI/src/test/scripts/
  2. Running app:   
    $ ./run_feedapi.sh
