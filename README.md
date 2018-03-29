@@ -44,13 +44,13 @@
     
 ## Test with scripts:
  1. move to scripts directory  
-   ```
+```
    $ cd /FeedAPI/src/test/scripts/
-   ```
+```
  2. Running app:   
-    ```
+```
    $ ./run_feedapi.sh
-    ```
+```
  3. clear all test data: 
     ```
    $ ./clear_all_test_data.sh
