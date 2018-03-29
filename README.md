@@ -61,11 +61,11 @@
 
         - to check saved Users
 
-   $ ./internal/get_all_users.sh 
+       $ ./internal/get_all_users.sh 
 
         - to check saved Subscriptions
-```
-   $ ./internal/get_all_subscriptions.sh
+
+       $ ./internal/get_all_subscriptions.sh
 ```
  5. Add Articles to a Feed
 ```
@@ -74,20 +74,20 @@
 
         - to check saved Articles
 
-   $ ./internal/get_all_articles.sh 
+       $ ./internal/get_all_articles.sh 
 
         - to check saved FeedArticles
 
-   $ ./internal/get_all_feedarticles.sh 
+       $ ./internal/get_all_feedarticles.sh 
 ```
  6. Get all Feeds a Subscriber is following
-        - checking feeds userId_1 is following
 ```
+   - checking feeds userId_1 is following
    $ ./external_get_feeds_by_userId.sh userId_1 
 ```
  7. Get Articles from the set of Feeds a Subscriber is following
-        - userId_1 is following feedId_1 and feedId_2
 ```
+   - userId_1 is following feedId_1 and feedId_2
    $ ./external_get_articles_by_feedIds.sh feedId_1,feedId_2
 ```
     
