@@ -20,29 +20,29 @@
 
 ## Operations:
 
-  (1) Subscribe/Unsubscribe a User to a Feed
+  1. Subscribe/Unsubscribe a User to a Feed
   (external_subscribe_users.sh)
-      a) read the user from User collection
+      a. read the user from User collection
       	(a1) If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
       	(a2) If the user exists
 		      (a21) read the user's subscription from Subscription collection
 		      (a22) update/delete the the user's Subscription to Subscription collection
       
-  (2) Add Articles to a Feed
+  2. Add Articles to a Feed
   (external_add_articles.sh)
-      a) For each new articles
+      a. For each new articles
         (a1) create an Article and insert into Article collection
         (a2) create FeedArticle into FeedArticle collection for the newly created article
             (a21) if the Feed is not in Feed collection, create new Feed and insert into Feed collection
   
-  (3) Get all Feeds a Subscriber is following
+  3. Get all Feeds a Subscriber is following
   (external_get_feeds_by_userId.sh)
-      a) read listOfFeed for the user (subscriber) from Subscription collection 
+      a. read listOfFeed for the user (subscriber) from Subscription collection 
   
-  (4) Get Articles from the set of Feeds a Subscriber is following
+  4. Get Articles from the set of Feeds a Subscriber is following
   (external_get_articles_by_feedIds.sh)
-      a) read listOfFeed for the user (subscriber) from Subscription collection
-      b) read articles for the listOfFeed from FeedArticle collection  
+      a. read listOfFeed for the user (subscriber) from Subscription collection
+      b. read articles for the listOfFeed from FeedArticle collection  
 	
 You can run this application by using the following command:
 
