@@ -24,9 +24,9 @@
   (external_subscribe_users.sh)
       1. read the user from User collection
       	1. If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
-      	1. If the user exists
-		      1. read the user's subscription from Subscription collection
-		      1. update/delete the the user's Subscription to Subscription collection
+      	3. If the user exists
+		      3. read the user's subscription from Subscription collection
+		      2. update/delete the the user's Subscription to Subscription collection
       
   2. Add Articles to a Feed
   (external_add_articles.sh)
