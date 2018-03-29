@@ -58,11 +58,11 @@
  4. Subscribe users to some feeds
 ```
    $ ./external_subscribe_users.sh
-```
+
         - to check saved Users
-```
+
    $ ./internal/get_all_users.sh 
-```
+
         - to check saved Subscriptions
 ```
    $ ./internal/get_all_subscriptions.sh
@@ -71,13 +71,13 @@
 ```
    $ ./external_add_articles.sh  
    $ ./external_add_articles2.sh
-```
+
         - to check saved Articles
-```
+
    $ ./internal/get_all_articles.sh 
-```
+
         - to check saved FeedArticles
-```
+
    $ ./internal/get_all_feedarticles.sh 
 ```
  6. Get all Feeds a Subscriber is following
