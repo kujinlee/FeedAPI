@@ -11,7 +11,7 @@
         - Article is contents with listOfFeed attached. When article is fed to FeedAPI, it finds relevant Feeds from its listOfFeed attribute. One new article will insert one of more FeedArticle
 
 4. Subscription: {userId, listOfFeed}  
-       - Subscription is association between user and feed. A given user has listOfFeed associated.
+        - Subscription is association between user and feed. A given user has listOfFeed associated.
 
 5. FeedArticle: {feedId, articleId}   
         - FeedArticle is association between a feed and an article. 
