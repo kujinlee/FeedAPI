@@ -29,10 +29,10 @@
 		      1. update/delete the the user's Subscription to Subscription collection
       
   2. Add Articles to a Feed (external_add_articles.sh)
-        For each new articles  
-            create an Article and insert into Article collection  
-            create FeedArticle into FeedArticle collection for the newly created article  
-                if the Feed is not in Feed collection, create new Feed and insert into Feed collection
+        - For each new articles  
+            - create an Article and insert into Article collection  
+            - create FeedArticle into FeedArticle collection for the newly created article  
+                - if the Feed is not in Feed collection, create new Feed and insert into Feed collection
   
   3. Get all Feeds a Subscriber is following
   (external_get_feeds_by_userId.sh)
