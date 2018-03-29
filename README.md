@@ -22,7 +22,7 @@
 
   1. Subscribe/Unsubscribe a User to a Feed
   (external_subscribe_users.sh)
-      1a. read the user from User collection
+      1. read the user from User collection
       	(a1) If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
       	(a2) If the user exists
 		      (a21) read the user's subscription from Subscription collection
