@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-final class Article {
+final public class Article {
 
     @Id
     private String id;

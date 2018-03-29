@@ -82,16 +82,16 @@ final class ArticleController {
         return articleEntry;
     }
     
-    // TODO: feed1,feed2 doesn't work. feed1 works
+    // TODO: feed1,feed2 doesn't work - this may be AND condition not OR. feed1 works
     /**
      * 
      * @param feedsCsv - single string as comma separated list of feedIds without space char
      * @return
      */
     @RequestMapping(value = "/feedapi/article/feeds/{feedIdsCsv}", method = RequestMethod.GET)
-    List<Article> findByFeedIdsIn(@PathVariable("feedsCsv") String feedsCsv) {
-        LOGGER.info("Finding article entries with feeds: {}", feedsCsv);
-        List<String> feedsToQuery = Arrays.asList(feedsCsv);
+    List<Article> findByFeedIdsIn(@PathVariable("feedIdsCsv") String feedIdsCsv) {
+        LOGGER.info("Finding article entries with feeds: {}", feedIdsCsv);
+        List<String> feedsToQuery = Arrays.asList(feedIdsCsv.split(","));
         LOGGER.info("Finding article entries with feedIds: {}", feedsToQuery);
         List<Article> articleEntries = service.findByFeedIdsIn(feedsToQuery);
         LOGGER.info("Found article entries with information: {}", articleEntries);

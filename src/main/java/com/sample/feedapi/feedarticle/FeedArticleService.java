@@ -2,7 +2,7 @@ package com.sample.feedapi.feedarticle;
 
 import java.util.List;
 
-interface FeedArticleService {
+public interface FeedArticleService {
 
     FeedArticle create(FeedArticle feedArticle);
 

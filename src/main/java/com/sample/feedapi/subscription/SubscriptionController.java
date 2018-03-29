@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-final class SubscriptionController {
+final public class SubscriptionController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SubscriptionController.class);
 
@@ -95,9 +95,9 @@ final class SubscriptionController {
      * @return
      */
     @RequestMapping(value = "/feedapi/subscription/feeds/{feedIdsCsv}", method = RequestMethod.GET)
-    List<Subscription> findByFeedIdsIn(@PathVariable("feedsCsv") String feedsCsv) {
-        LOGGER.info("Finding subscription entries with feeds: {}", feedsCsv);
-        List<String> feedsToQuery = Arrays.asList(feedsCsv);
+    List<Subscription> findByFeedIdsIn(@PathVariable("feedIdsCsv") String feedIdsCsv) {
+        LOGGER.info("Finding subscription entries with feeds: {}", feedIdsCsv);
+        List<String> feedsToQuery = Arrays.asList(feedIdsCsv);
         LOGGER.info("Finding subscription entries with feedIds: {}", feedsToQuery);
         List<Subscription> subscriptionEntries = service.findByFeedIdsIn(feedsToQuery);
         LOGGER.info("Found subscription entries with information: {}", subscriptionEntries);
@@ -106,10 +106,10 @@ final class SubscriptionController {
     }
 
     @RequestMapping(value = "/feedapi/subscription/{id}", method = RequestMethod.PUT)
-    Subscription update(@RequestBody @Valid Subscription userEntry, @PathVariable("id") String id) {
-        LOGGER.info("Updating subscription entry with information: {}", userEntry);
+    Subscription update(@RequestBody @Valid Subscription subscriptionEntry, @PathVariable("id") String id) {
+        LOGGER.info("Updating subscription entry with information: {}", subscriptionEntry);
 
-        Subscription updated = service.update(userEntry);
+        Subscription updated = service.update(subscriptionEntry);
         LOGGER.info("Updated subscription entry with information: {}", updated);
 
         return updated;

@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
  * @author klee
  *
  */
-final class Subscription {
+final public class Subscription {
 
     @Id
     private String id;

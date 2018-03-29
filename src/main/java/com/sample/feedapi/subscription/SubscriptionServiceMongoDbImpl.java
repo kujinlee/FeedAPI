@@ -44,6 +44,18 @@ final class SubscriptionServiceMongoDbImpl implements SubscriptionService {
 
         return deleted;
     }
+    
+	@Override
+	public Subscription deleteByUserId(String userId) {
+        LOGGER.info("Deleting a subscription entry with userId: {}", userId);
+
+        Subscription deleted = repository.findByUserId(userId);
+        repository.delete(deleted);
+
+        LOGGER.info("Deleted subscription entry with informtation: {}", deleted);
+
+        return deleted;
+	}
 
     @Override
     public List<Subscription> findAll() {

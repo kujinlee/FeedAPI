@@ -2,7 +2,7 @@ package com.sample.feedapi.user;
 
 import java.util.List;
 
-interface UserService {
+public interface UserService {
 
     User create(User user);
 

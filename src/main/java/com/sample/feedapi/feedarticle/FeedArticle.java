@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
  * @author klee
  *
  */
-final class FeedArticle {
+final public class FeedArticle {
 
     @Id
     private String id;

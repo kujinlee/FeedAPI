@@ -2,7 +2,7 @@ package com.sample.feedapi.feed;
 
 import org.springframework.data.annotation.Id;
 
-final class Feed {
+final public class Feed {
 
     @Id
     private String id;

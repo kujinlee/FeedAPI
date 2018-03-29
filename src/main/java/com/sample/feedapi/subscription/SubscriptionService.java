@@ -2,11 +2,13 @@ package com.sample.feedapi.subscription;
 
 import java.util.List;
 
-interface SubscriptionService {
+public interface SubscriptionService {
 
     Subscription create(Subscription subscription);
 
     Subscription delete(String id);
+    
+    Subscription deleteByUserId(String userId);
     
     List<Subscription> findAll();
 
