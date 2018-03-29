@@ -23,10 +23,10 @@
   1. Subscribe/Unsubscribe a User to a Feed
   (external_subscribe_users.sh)
       1. read the user from User collection
-      	(a1) If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
-      	(a2) If the user exists
-		      (a21) read the user's subscription from Subscription collection
-		      (a22) update/delete the the user's Subscription to Subscription collection
+      	1. If the user does not exist, ask user's information and create the user and user's subscription into User and Subscription collection
+      	1. If the user exists
+		      1. read the user's subscription from Subscription collection
+		      1. update/delete the the user's Subscription to Subscription collection
       
   2. Add Articles to a Feed
   (external_add_articles.sh)
