@@ -1,7 +1,7 @@
 # FeedAPI with Mongodb
 
 ## Design:
-1. User: {userId, name}  
+1. User: {userId, name}
         - User can subscribe one or more feeds the user want to follow. User can find its listOfFeed via Subscription collection in mongoDB. Once listOfFeed are found for the given user, all the articles associated with found listOfFeed can also be retrieved from FeedArticle collection
 
 2. Feed: {feedId, description}  
