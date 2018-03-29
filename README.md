@@ -1,20 +1,19 @@
 # FeedAPI with Mongodb
 
 ## Design:
-1. User: {userId, name}
+1. User: {userId, name}  
         - User can subscribe one or more feeds the user want to follow. User can find its listOfFeed via Subscription collection in mongoDB. Once listOfFeed are found for the given user, all the articles associated with found listOfFeed can also be retrieved from FeedArticle collection
 
-2. Feed: {feedId, description}
+2. Feed: {feedId, description}  
         - Feed is marker (ie, tag) for article. Articles for a given feed can be found from FeedArticle collection in mongoDB
 
-3. Article: {articleId, listOfFeed, content}
-
+3. Article: {articleId, listOfFeed, content}  
         - Article is contents with listOfFeed attached. When article is fed to FeedAPI, it finds relevant Feeds from its listOfFeed attribute. One new article will insert one of more FeedArticle
 
-4. Subscription: {userId, listOfFeed}
+4. Subscription: {userId, listOfFeed}  
        - Subscription is association between user and feed. A given user has listOfFeed associated.
 
-5. FeedArticle: {feedId, articleId} 
+5. FeedArticle: {feedId, articleId}   
         - FeedArticle is association between a feed and an article. 
 
 ## Operations:
